@@ -1,0 +1,45 @@
+# print self.firstname
+            box=wx.TextEntryDialog(None,"Enter AddressBookName To Save","Title","default text")
+            if box.ShowModal()==wx.ID_OK:
+                self.addressbookname=box.GetValue()
+                #self.dial = wx.MessageDialog(None, 'saved successfully', 'Info', wx.OK)
+                #self.dial.ShowModal()
+                if not os.path.exists('AddressBookDataBase/'+self.addressbookname+'.txt'):
+                    
+                    
+                    self.filename = open('AddressBookDataBase/'+self.addressbookname+'.txt','w')
+                    self.filename.write(self.firstname+'\n')
+                    self.filename.write(self.secondname+'\n')
+                    self.filename.write(self.addressline1+'\n')
+                    self.filename.write(self.addressline2+'\n')
+                    self.filename.write(self.addressline3+'\n')
+                    self.filename.write(self.city+'\n')
+                    self.filename.write(self.state+'\n')
+                    self.filename.write(self.zip+'\n')
+                    self.filename.write(self.homephe+'\n')
+                    self.filename.write(self.workphe+'\n')
+                    self.filename.write(self.mobile+'\n')
+                    self.filename.write(self.email+'\n')
+                    self.filename.write(self.email2+'\n')
+                    self.filename.write(self.notes+'\n')
+                    self.filename.close()
+                    self.filename=open('AddressBookDataBase/filenames.txt','a')
+                    self.filename.write(self.addressbookname+'\n')
+                    self.filename.close()
+                    self.dial = wx.MessageDialog(None, 'saved successfully', 'Info', wx.OK)
+                    self.dial.ShowModal()
+
+                    
+                else:
+                    self.dial = wx.MessageDialog(None, 'AddressBookname already exists, enter another name to save', 'Info', wx.OK)
+                    self.dial.ShowModal()
+                
+            else:
+                self.dial = wx.MessageDialog(None, 'save cancelled', 'Info', wx.OK)
+                self.dial.ShowModal()
+                
+                    
+        else:
+
+            self.dial = wx.MessageDialog(None, 'please fill all fields', 'Info', wx.OK)
+            self.dial.ShowModal()
